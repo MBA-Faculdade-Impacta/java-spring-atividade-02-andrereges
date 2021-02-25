@@ -21,7 +21,7 @@ public class HelloWorldController {
 		//Exmeplo de resposta: Hello world felipe !
 		
 		
-		return ResponseEntity.ok("Hello world !");
+		return ResponseEntity.ok("Hello world " + nome +" !");
 	}
 	
 }
