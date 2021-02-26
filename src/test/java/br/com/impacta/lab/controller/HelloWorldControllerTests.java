@@ -51,5 +51,31 @@ public class HelloWorldControllerTests {
 		assertEquals("Hello world TESTE !".toUpperCase(), response.toUpperCase());
 		
 	}
+
+	@Test
+	public void a2_ConditionalAgeLess17Test() throws Exception {
+		RequestBuilder request = get("/atividades/conditional").queryParam("age", "15")
+					.accept(MediaType.TEXT_PLAIN);
+		
+		MvcResult result = mvc.perform(request).andExpect(status().isOk()).andReturn();
+		
+		String response = result.getResponse().getContentAsString();
+		
+		assertEquals("Você possui menos de 18 anos".toUpperCase(), response.toUpperCase());
+		
+	}
+
+		@Test
+	public void a2_ConditionalAgeMore18Test() throws Exception {
+		RequestBuilder request = get("/atividades/conditional").queryParam("age", "20")
+					.accept(MediaType.TEXT_PLAIN);
+		
+		MvcResult result = mvc.perform(request).andExpect(status().isOk()).andReturn();
+		
+		String response = result.getResponse().getContentAsString();
+		
+		assertEquals("Você possui 18 anos ou mais".toUpperCase(), response.toUpperCase());
+		
+	}
 	
 }

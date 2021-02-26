@@ -23,5 +23,16 @@ public class HelloWorldController {
 		
 		return ResponseEntity.ok("Hello world " + nome +" !");
 	}
+
+	@GetMapping("conditional")
+	public ResponseEntity<String> verifyAge(@RequestParam(name="age", required=true) Integer age) {		
+		
+		String response = "Você possui menos de 18 anos"; 
+		if (age > 18) {
+			response = "Você possui 18 anos ou mais";
+		}
+
+		return ResponseEntity.ok(response);
+	}
 	
 }
