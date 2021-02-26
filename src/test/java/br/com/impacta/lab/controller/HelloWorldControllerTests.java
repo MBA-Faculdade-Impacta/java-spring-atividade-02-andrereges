@@ -65,7 +65,7 @@ public class HelloWorldControllerTests {
 		
 	}
 
-		@Test
+	@Test
 	public void a2_ConditionalAgeMore18Test() throws Exception {
 		RequestBuilder request = get("/atividades/conditional").queryParam("age", "20")
 					.accept(MediaType.TEXT_PLAIN);
@@ -75,6 +75,19 @@ public class HelloWorldControllerTests {
 		String response = result.getResponse().getContentAsString();
 		
 		assertEquals("Você possui 18 anos ou mais".toUpperCase(), response.toUpperCase());
+		
+	}
+
+	@Test
+	public void a2_RepetitionTest() throws Exception {
+		RequestBuilder request = get("/atividades/repetition").queryParam("number", "10")
+					.accept(MediaType.TEXT_PLAIN);
+		
+		MvcResult result = mvc.perform(request).andExpect(status().isOk()).andReturn();
+		
+		String response = result.getResponse().getContentAsString();
+		
+		assertEquals("12345678910".toUpperCase(), response.toUpperCase());
 		
 	}
 	

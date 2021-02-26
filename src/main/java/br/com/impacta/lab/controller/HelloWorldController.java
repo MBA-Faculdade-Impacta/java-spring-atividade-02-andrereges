@@ -34,5 +34,17 @@ public class HelloWorldController {
 
 		return ResponseEntity.ok(response);
 	}
+
+	@GetMapping("repetition")
+	public ResponseEntity<String> repetitionNumber(@RequestParam(name="number", required=true) Integer number) {		
+		
+		String response = ""; 
+
+		for(int i=1; i <= number; i++) {
+			response = response + i;
+		}
+
+		return ResponseEntity.ok(response);
+	}
 	
 }
